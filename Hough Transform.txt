@@ -1,0 +1,33 @@
+Hough Transform
+
+cv2.HoughLines(image, rho, theta, threshold[, lines[, srn[, stn[, min_theta[, max_theta]]]]])
+-> lines
+       검출된 선을 저장하는 벡터, 각각의 선은 2~3개의 요소를 갖는 벡터로 이루어져있음.
+-> 벡터는 거리, 위상, (votes)로 이루어져있음. 왼쪽 상단이 (0, 0)
+* votes is the value of accumulator.
+
+
+
+image       변환할 이미지
+
+rho         검출할 직선의 거리 해상도, 일반적으로 1픽셀로 설정
+
+theta       검출할 직선의 각도 해상도, 일반적으로 1도(pi/180)로 설정
+            작을수록 세밀한 방향 검출, 연산량 증가
+            클수록 방향 정확도 낮아짐, 연산은 빠름
+
+threshold   검출할 직선의 임계치, 높을수록 검출되는 직선의 개수가 적어짐
+
+srn         거리 해상도 인자, rho의 정확도에 대한 매개변수, < rho
+stn         각도 해상도 인자, theta의 정확도에 대한 매개변수 < theta
+
+min_theta   최소 각도 설정, 0부터 max_theta 까지의 값
+
+max_theta   최대 각도 설정, min_theta 부터 CV_PI 까지의 값. 360도
+
+
+
+cv2.HoughLinesP(image, rho, theta, threshold[, lines[, minLength[, maxLineGap]]])
+-> lines
+
+일반 허프변환과 차이는 srn, stn이 없다는 것과 선의 길이의 최소와 최대를 설정하여 직선을 찾는다는 것.

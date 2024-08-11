@@ -1,0 +1,111 @@
+cv2 functions
+
+@ defined const
+===========================================
+enum ColorConversionCodes{
+...
+COLOR_BGR2GRAY = 6
+COLOR_RGB2GRAY = 7
+COLOR_GRAY2BGR = 8
+...
+}
+
+
+ThresholdTypes{
+THRESH_BINARY = 0
+THRESH_BINARY_INV = 1
+...
+THRESH_MASK = 7
+THRESH_OTSU = 8
+THRESH_TRIANGLE = 16
+}
+===========================================
+@ OpenCV LintTypes
+
+cv2.LINE_4
+4-connected line
+
+cv2.LINE_8
+8-connected line
+
+cv2.LINE_AA
+antialiased line
+
+둘의 차이는?
+
+===========================================
+
+
+@ cv2.
+===========================================
+
+cvtColor(src, code[, dst[, dstCn]]) -> dst
+-> ignore dst -> make new array
+-> ignore dstCn -> same channel as src
+
+===========================================
+
+threshold(src, thresh, maxval, type[, dst) -> ret, dst
+thresh = 127 ( half of 255 )
+maxval = 255 ( normally same val 255 )
+
+-> THRESH_BINARY_INV | THRESH_OTSU
+-> more sophisticated approach
+
+===========================================
+
+cv2.connectedComponentsWithStats(src, labels, stats, centroids, connectivity, ltype)
+
+-> they are options without src
+
+4 return value
+
+cnt, labels, stats, centroids
+
+cnt -> including whole image
+label -> same value at same components
+stats -> information about components
+
+ConnectedComponentsTypes ( stats )
+Left, Top, Width, Height, Area
+
+===========================================
+
+cv2.rectangle(img, pt1, pt2, color[, thickness[, lineType[, shift]]]) => img
+
+if thickness has the negative value -> filled
+
+===========================================
+
+cv2.bitwise_and(src1, src2[, dst[, mask]]) -> dst
+
+bitwise_not
+bitwise_or
+bitwise_xor
+
+
+===========================================
+
+image.shape
+
+튜플형태임.
+보통 2D이미지 이기 때문에 반환값이 2개 ( 높이, 너비 )
+컬러 이미지의 경우 ( 높이, 너비, 체널수=3 )
+
+튜플이란?
+여러 개의 데이터를 모아 놓은 데이터 타입 중 하나.
+리스트와 마찬가지로 순서(인덱스)가 있음.
+리스트는 변경될 수 있지만 튜플은 변경될 수 없는 특성이 있음.
+
+튜플 안에 포함된 요소들이 가변한 객체일 경우 해당 요소들의 내용은 변경될 수 있음.
+shape[:, 2]
+2차원 배열의 튜플 중에서 두 번째 원소
+2차원 배열의 열 수를 나타냄.
+
+튜플 사용법에 대해 알 필요가 있음.
+
+===========================================
+
+
+
+# def zeros(shape, dtype=None, order='C', *args, **kwargs): # real signature unknown; NOTE: unreliably restored from __doc__
